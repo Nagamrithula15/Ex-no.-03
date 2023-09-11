@@ -1,0 +1,183 @@
+//team 7//
+//prg 1- employee class//
+import java.util.Scanner;
+
+class Employee {
+    String emp_name, emp_id, address, mail_id, mobile_no;
+    double basicPay;
+
+    public Employee(String emp_name, String emp_id, String address, String mail_id, String mobile_no, double basicPay) {
+        this.emp_name = emp_name;
+        this.emp_id = emp_id;
+        this.address = address;
+        this.mail_id = mail_id;
+        this.mobile_no = mobile_no;
+        this.basicPay = basicPay;
+    }
+
+    public double calculateDA() {
+        return 0;
+    }
+
+    public double calculateHRA() {
+        return 0;
+    }
+
+    public double calculatePF() {
+        return 0;
+    }
+
+    public double calculateStaffClubFund() {
+        return 0;
+    }
+
+    public double calculateGrossSalary() {
+        return basicPay + calculateDA() + calculateHRA() + calculateStaffClubFund();
+    }
+
+    public double calculateNetSalary() {
+        return calculateGrossSalary() - calculatePF();
+    }
+
+    public void generatePaySlip() {
+        System.out.println("Employee ID: " + emp_id);
+        System.out.println("Employee Name: " + emp_name);
+        System.out.println("Basic Pay: " + basicPay);
+        System.out.println("Dearness Allowance (DA): " + calculateDA());
+        System.out.println("House Rent Allowance (HRA): " + calculateHRA());
+        System.out.println("Provident Fund (PF): " + calculatePF());
+        System.out.println("Staff Club Fund: " + calculateStaffClubFund());
+        System.out.println("Gross Salary: " + calculateGrossSalary());
+        System.out.println("Net Salary: " + calculateNetSalary());
+    }
+}
+
+class Programmer extends Employee {
+    public Programmer(String emp_name, String emp_id, String address, String mail_id, String mobile_no, double basicPay) {
+        super(emp_name, emp_id, address, mail_id, mobile_no, basicPay);
+    }
+
+    @Override
+    public double calculateDA() {
+        return 0.97 * basicPay;
+    }
+
+    @Override
+    public double calculateHRA() {
+        return 0.10 * basicPay;
+    }
+
+    @Override
+    public double calculatePF() {
+        return 0.12 * basicPay;
+    }
+
+    @Override
+    public double calculateStaffClubFund() {
+        return 0.001 * basicPay;
+    }
+}
+
+class AssistantProfessor extends Employee {
+    public AssistantProfessor(String emp_name, String emp_id, String address, String mail_id, String mobile_no, double basicPay) {
+        super(emp_name, emp_id, address, mail_id, mobile_no, basicPay);
+    }
+
+    @Override
+    public double calculateDA() {
+        return 0.98 * basicPay;
+    }
+
+    @Override
+    public double calculateHRA() {
+        return 0.12 * basicPay;
+    }
+
+    @Override
+    public double calculatePF() {
+        return 0.15 * basicPay;
+    }
+
+    @Override
+    public double calculateStaffClubFund() {
+        return 0.002 * basicPay;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter Programmer's details:");
+        System.out.print("Name: ");
+        String programmerName = scanner.nextLine();
+        System.out.print("Employee ID: ");
+        String programmerId = scanner.nextLine();
+        System.out.print("Address: ");
+        String programmerAddress = scanner.nextLine();
+        System.out.print("Email ID: ");
+        String programmerEmail = scanner.nextLine();
+        System.out.print("Mobile Number: ");
+        String programmerMobile = scanner.nextLine();
+        System.out.print("Basic Pay: ");
+        double programmerBasicPay = scanner.nextDouble();
+
+        Programmer programmer = new Programmer(programmerName, programmerId, programmerAddress, programmerEmail, programmerMobile, programmerBasicPay);
+        programmer.generatePaySlip();
+
+        System.out.println();
+
+        System.out.println("Enter Assistant Professor's details:");
+        scanner.nextLine(); // Consume the newline character
+        System.out.print("Name: ");
+        String assistantName = scanner.nextLine();
+        System.out.print("Employee ID: ");
+        String assistantId = scanner.nextLine();
+        System.out.print("Address: ");
+        String assistantAddress = scanner.nextLine();
+        System.out.print("Email ID: ");
+        String assistantEmail = scanner.nextLine();
+        System.out.print("Mobile Number: ");
+        String assistantMobile = scanner.nextLine();
+        System.out.print("Basic Pay: ");
+        double assistantBasicPay = scanner.nextDouble();
+
+        AssistantProfessor assistantProfessor = new AssistantProfessor(assistantName, assistantId, assistantAddress, assistantEmail, assistantMobile, assistantBasicPay);
+        assistantProfessor.generatePaySlip();
+
+        scanner.close();
+    }
+}
+//prg 2-degree//
+public class JavaApplication{
+    public static void main(String[] args) {
+        degree d=new degree();  
+        undergraduate ug = new undergraduate();
+        postgraduate pg = new postgraduate();
+
+        d.getdegree();        
+        ug.getdegree();  
+        pg.getdegree();  
+    }
+}
+
+    }
+   
+}
+class degree{
+    void getdegree(){
+        System.out.println("i got a degree");
+    }
+}
+class undergraduate extends degree{
+   
+    void getdegree(){
+        System.out.println("i am an undergraduate");
+        }
+}
+class postgraduate extends degree{
+   
+    void getdegree(){
+        System.out.println("i am an postgraduate");
+    }
+}
